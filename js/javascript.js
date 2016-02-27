@@ -1,4 +1,4 @@
-var chamander = {
+var charmander = {
 	name: "Charmander",
 	health: 100,
 	lvl: 12,
@@ -62,3 +62,43 @@ var pikachu = {
 	]
 
 };
+
+var currentState;
+var cpuPokemon;
+var userPokemon;
+
+var cpuTurn = {
+	play: function(){
+
+	}
+};
+
+var playerTurn = {
+	play: function(){
+
+	}
+};
+
+var loop = function() {
+	if (cpuPokemon.health <= 0 || userPokemon.health <= 0){
+		$("#game-over").removeClass("hide");
+		console.log("game over");
+	}else{
+		currentState.play();
+	}
+}
+
+
+var init = function () {
+	cpuPokemon = pikachu;
+	userPokemon = charmander;
+	$("#cpu-name").text(cpuPokemon.name);
+	$("#cpu-lvl").text("lvl "+cpuPokemon.lvl);
+
+	$("#user-name").text(userPokemon.name);
+	$("#user-lvl").text("lvl "+userPokemon.lvl);
+	currentState = playerTurn;
+	loop();
+};
+
+init();
