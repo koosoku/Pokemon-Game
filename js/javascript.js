@@ -140,8 +140,25 @@ var cpuTurn = {
 
 
 var playerTurn = {
-	play: function(){
+	var currentUserMove;
 
+	play: function(){
+		var setUpUserField = function(){
+			var moveTexts =["move1-text","move2-text","move3-text","move4-text"];
+
+			$("#user-buttons").removeClass("hide");
+			$("#chat-text").text("What will "+userPokemon.name + " do?")
+
+			for(var i = 0; i<moveTexts.length; i++){
+				$("#" + moveTexts[i]).text(userPokemon.moves[i].name);
+			}
+		};
+
+		$("#move1-button","#move2-button","#move3-button","#move4-button").unbind().click(function(){
+			var move = $(this).attr("value");
+			currentUserMove = userPokemon.moves[move];
+		});
+		setUpUserField();
 	}
 };
 
