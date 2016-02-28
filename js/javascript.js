@@ -127,6 +127,13 @@ var cpuTurn = {
 			loop();
 		};
 
+		var defensiveMove = function(){
+			$("#attack-img").addClass("hide");
+			$("#attack-img").removeClass("cpu-attack-img");
+			userPokemon.effect = currentCPUMove.power;
+			currentState = playerTurn;
+			loop();
+		}
 		setUpCPUField();
 	}
 };
